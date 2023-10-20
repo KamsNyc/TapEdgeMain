@@ -1,7 +1,6 @@
 
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { SignIn, SignUp, UserButton, auth } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -10,7 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 
 function Navbar() {
-  const {userId} = auth()
+  const userId = true
   return (
     <nav className='h-[61px] w-full flex items-center justify-between px-4 lg:px-8'>
        {/* LEFT SECTION  */}
@@ -18,7 +17,7 @@ function Navbar() {
             <h1 className='text-2xl font-bold text-[#FF7349]'>TAPEDGE</h1>
 
             <ul className='flex gap-5 text-[15px]'>
-                <Link className='navLinkHover' href={'/protected'}>Home</Link>
+                <Link className='navLinkHover' href={'/dashboard'}>Home</Link>
                 <Link className='navLinkHover' href={'/'}>Review Card</Link>
                 <Link className='navLinkHover' href={'/'}>Why TapEdge?</Link>
                 <Link className='navLinkHover' href={'/'}>FAQ</Link>
@@ -47,7 +46,7 @@ function Navbar() {
           <SheetTitle className="">Welcome Name, Account
            <span>  
               {/* USER PROFILE */}
-        <UserButton afterSignOutUrl="/"/>
+                user button
         
       </span>
       </SheetTitle>
@@ -58,10 +57,10 @@ function Navbar() {
                 <TabsTrigger value="signup">Sign up</TabsTrigger>
               </TabsList>
               <TabsContent className="py-2" value="login">
-                <SignIn />
+                sign in
               </TabsContent>
               <TabsContent value="signup">
-                <SignUp />
+                sign up
               </TabsContent>
             </Tabs>
           </SheetDescription>
@@ -71,7 +70,7 @@ function Navbar() {
             
 
     {/* USER PROFILE */}
-    <UserButton afterSignOutUrl="/"/>
+    user profile
             
             
               
@@ -114,7 +113,7 @@ function Navbar() {
             
 
     {/* USER PROFILE */}
-    <UserButton afterSignOutUrl="/"/>
+    user button
             
             
               
