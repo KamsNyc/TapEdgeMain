@@ -4,12 +4,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { SignUp, SignIn, auth, UserButton } from '@clerk/nextjs'
 
 
 
 
 function Navbar() {
-  const userId = true
+  const userId = auth()
+  console.log
   return (
     <nav className='h-[61px] w-full flex items-center justify-between px-4 lg:px-8'>
        {/* LEFT SECTION  */}
@@ -32,7 +34,7 @@ function Navbar() {
 
             {/* IF USER IS LOGGED OUT */}
             {
-              !userId && ( 
+              userId && ( 
               <>
                      <Sheet>
       <SheetTrigger>
@@ -53,8 +55,8 @@ function Navbar() {
           <SheetDescription className="py-4 flex items-center justify-center text-center">
             <Tabs defaultValue="signup" className="w-[400px]">
               <TabsList className="">
-                <TabsTrigger value="login">Login</TabsTrigger>
-                <TabsTrigger value="signup">Sign up</TabsTrigger>
+                <TabsTrigger value="login"><SignIn /></TabsTrigger>
+                <TabsTrigger value="signup"><SignUp /></TabsTrigger>
               </TabsList>
               <TabsContent className="py-2" value="login">
                 sign in
@@ -70,7 +72,7 @@ function Navbar() {
             
 
     {/* USER PROFILE */}
-    user profile
+    <UserButton />
             
             
               
